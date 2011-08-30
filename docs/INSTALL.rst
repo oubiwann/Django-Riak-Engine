@@ -22,6 +22,10 @@ If you want to assist with developement of django_riak_engine or use the latest
 code we're working on, you can install from the sources. Once you have git
 installed, just do the following::
 
+	$ git clone git://github.com/basho/riak-python-client.git 
+	$ cd riak-python-client
+	$ python setup.py install
+    $ cd ..
     $ git clone git@github.com:oubiwann/django-riak-engine.git
     $ cd django-riak-engine
     $ make install
