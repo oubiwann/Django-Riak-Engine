@@ -7,7 +7,7 @@ Dependencies
 
 django_riak_engine has the following dependencies:
 
- * Python
+ * Python (2.7 preferable), riak-python-client, with Protocol Buffers http://code.google.com/p/protobuf/ and python-setuptools (ie port install py27-setuptools for OS X and MacPorts as dependencies)
  * Riak
  * Python drivers for Riak
  * Django nonrel

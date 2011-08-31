@@ -37,7 +37,7 @@ dist.setup(
         filename="README.rst"),
 
     platforms=['any'],
-    install_requires=['pyriak', 'django>=1.2', 'djangotoolbox'],
+    install_requires=['docutils', 'django>=1.3', 'djangotoolbox'],
     packages=dist.find_packages(meta.library_name),
 
     classifiers=CLASSIFIERS,

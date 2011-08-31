@@ -53,7 +53,7 @@ Dependencies
 
 django_riak_engine has the following dependencies:
 
- * Python
+ * Python (2.7 preferable), riak-python-client, with Protocol Buffers http://code.google.com/p/protobuf/ and python-setuptools (ie port install py27-setuptools for OS X and MacPorts as dependencies)
  * Riak
  * Python drivers for Riak
  * Django nonrel
@@ -68,6 +68,10 @@ If you want to assist with developement of django_riak_engine or use the latest
 code we're working on, you can install from the sources. Once you have git
 installed, just do the following::
 
+	$ git clone git://github.com/basho/riak-python-client.git 
+	$ cd riak-python-client
+	$ python setup.py install
+    $ cd ..
     $ git clone git@github.com:oubiwann/django-riak-engine.git
     $ cd django-riak-engine
     $ make install
@@ -131,8 +135,14 @@ Configure the app to talk to a specific database in settings.py::
             'HOST': 'localhost',
             'PORT': '8091',
             'SUPPORTS_TRANSACTIONS': False,
+			'RIAK_TRANSPORT_CLASS':'riak.RiakHttpTransport', 
         },
     }
+
+
+* riak.transports.pbc.RiakPbcCachedTransport A cache that reuses a set of protocol buffer connections. You can set a boundary of connections kept in the cache by specifying a maxsize attribute when creating the object.
+* riak.transports.http.RiakHttpReuseTransport This transport is more efficient when reusing HTTP connections by setting SO_REUSEADDR on the underlying TCP socket. That allows the TCP stack to reuse connections before the TIME_WAIT state has passed.
+* riak.transports.http.RiakHttpPoolTransport Use the urllib3 connection pool to pool connections to the same host. 
 
 
 Using the Database

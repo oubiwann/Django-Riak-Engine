@@ -22,8 +22,14 @@ Configure the app to talk to a specific database in settings.py::
             'HOST': 'localhost',
             'PORT': '8091',
             'SUPPORTS_TRANSACTIONS': False,
+			'RIAK_TRANSPORT_CLASS':'riak.RiakHttpTransport', 
         },
     }
+
+
+* riak.transports.pbc.RiakPbcCachedTransport A cache that reuses a set of protocol buffer connections. You can set a boundary of connections kept in the cache by specifying a maxsize attribute when creating the object.
+* riak.transports.http.RiakHttpReuseTransport This transport is more efficient when reusing HTTP connections by setting SO_REUSEADDR on the underlying TCP socket. That allows the TCP stack to reuse connections before the TIME_WAIT state has passed.
+* riak.transports.http.RiakHttpPoolTransport Use the urllib3 connection pool to pool connections to the same host. 
 
 
 Using the Database
