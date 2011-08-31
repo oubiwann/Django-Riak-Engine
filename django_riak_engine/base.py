@@ -49,8 +49,14 @@ class DatabaseWrapper(NonrelDatabaseWrapper):
         self._connected = False 
         def _connect(self):
             host = self.settings_dict['HOST'] or None
-            port = self.settings_dict.get('PORT', None)
-            transport_class = self.settings_dict.get('RIAK_TRANSPORT_CLASS',riak.RiakHttpTransport)
+            port = self.settings_dict.get('PORT', None) 
+            options = {
+            'RIAK_TRANSPORT_CLASS': riak.RiakHttpTransport,
+            }
+            options.update(self.settings_dict.get('OPTIONS', {}))
+
+                
+            transport_class = options['RIAK_TRANSPORT_CLASS']
         return  
             self._connection = riak.RiakClient(host=host, port=port,transport_class=transport_class))
             self.db = self._connection[self.db_name]
