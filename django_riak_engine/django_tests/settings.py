@@ -6,8 +6,11 @@ DATABASES = {
             'PASSWORD': '',
             'HOST': 'localhost',
             'PORT': '8098',
-            'SUPPORTS_TRANSACTIONS': False, 
+            'SUPPORTS_TRANSACTIONS': False,
+            'OPTIONS': {
             'RIAK_TRANSPORT_CLASS':'riak.RiakHttpTransport', 
+            }, 
+            
         },
 }
 
